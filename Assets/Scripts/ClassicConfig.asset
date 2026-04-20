@@ -14,10 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
   rows: 10
   cols: 10
+  allowTouching: 0
   ships:
   - shipName: Destroyer
     size: 4
     count: 1
+    frontSprite: {fileID: 1511058063, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}
+    middleSprite: {fileID: 1856695135, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}
+    backSprite: {fileID: 8688095191583601460, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}
   - shipName: Submarine
     size: 3
     count: 1
+    frontSprite: {fileID: 1511058063, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}
+    middleSprite: {fileID: 1856695135, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}
+    backSprite: {fileID: 8688095191583601460, guid: 476ea0b60d2148a49acc48021a9ad99e, type: 3}

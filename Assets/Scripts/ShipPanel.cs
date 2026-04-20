@@ -37,7 +37,12 @@ public class ShipPanel : MonoBehaviour
         {
             for (int i = 0; i < shipConfig.count; i++)
             {
-                ShipModel model = new ShipModel(shipConfig.shipName, shipConfig.size);
+                ShipModel model = new ShipModel(
+                    shipConfig.shipName,
+                    shipConfig.size,
+                    shipConfig.frontSprite,
+                    shipConfig.middleSprite,
+                    shipConfig.backSprite);
 
                 ShipView view = Instantiate(shipPrefab, transform);
                 view.Initialize(model, cellSize, step);
@@ -61,11 +66,12 @@ public class ShipPanel : MonoBehaviour
         int index = shipViews.IndexOf(view);
         if (index < 0) return;
 
-        if (view.Model.Orientation == ShipOrientation.Vertical)
+        // Nulstil til default-orientering (Right) uanset hvad skibet var roteret til
+        while (view.Model.Orientation != ShipOrientation.Right)
         {
             view.Model.Rotate();
-            view.UpdateShape();
         }
+        view.UpdateShape();
 
         view.Model.ClearAnchor();
         view.transform.localPosition = homePositions[index];

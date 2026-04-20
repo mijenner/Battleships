@@ -204,19 +204,21 @@ public class ShipPlacementController : MonoBehaviour
 
     // Skibet er forankret med top-venstre celle. Beregn hvor skibets center
     // skal være i verden, så det dækker celle-rækkefølgen pænt (inkl. mellemrum).
+    // Bemærk: I BoardView vokser y-koordinaten med stigende row,
+    // så et vertical skib med anker på lav row strækker sig opad (+y).
     private Vector3 ComputeShipWorldPos(CellView anchorCell, ShipModel model)
     {
         Vector3 anchorPos = anchorCell.transform.position;
         float step = playerBoardView.Step;
 
-        if (model.Orientation == ShipOrientation.Horizontal)
+        if (model.IsHorizontal)
         {
             float offsetX = (model.Size - 1) * step * 0.5f;
             return new Vector3(anchorPos.x + offsetX, anchorPos.y, anchorPos.z);
         }
         else
         {
-            float offsetY = -(model.Size - 1) * step * 0.5f;
+            float offsetY = (model.Size - 1) * step * 0.5f;
             return new Vector3(anchorPos.x, anchorPos.y + offsetY, anchorPos.z);
         }
     }
